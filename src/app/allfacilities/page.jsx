@@ -1,3 +1,4 @@
+import Link from "next/link";
 const FacilitiesPage = async () => {
   const res = await fetch("http://localhost:5000/allfacilities");
   const data = await res.json();
@@ -44,10 +45,12 @@ const FacilitiesPage = async () => {
                     ${facility.price_per_hour}
                   </p>
                 </div>
-
-                <button className="bg-[#9ACD32] hover:bg-[#861212]/0 bg-linear-to-r from-[#9ACD32] to-[#8cbd2b] text-[#0A2240] px-5 py-2 rounded-lg transition duration-300">
-                  Book Now
-                </button>
+                <Link
+                  href={`/facilities/${facility._id}`}
+                  className="bg-[#9ACD32] hover:bg-[#8cbd2b] text-[#0A2240] px-5 py-2 rounded-lg transition duration-300 inline-block"
+                >
+                  Details
+                </Link>
               </div>
             </div>
           </div>

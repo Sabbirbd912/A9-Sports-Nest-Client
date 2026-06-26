@@ -26,7 +26,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="/all-facilities"
+          href="/allfacilities"
           className="hover:text-lime-600 px-4 py-2 hover:bg-transparent focus:bg-transparent active:bg-transparent"
         >
           All Facilities
@@ -42,7 +42,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="/facility"
+          href="/addfacility"
           className="hover:text-lime-600 px-4 py-2 hover:bg-transparent focus:bg-transparent active:bg-transparent"
         >
           Add Facility
