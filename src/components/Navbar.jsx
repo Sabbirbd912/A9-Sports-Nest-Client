@@ -50,7 +50,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="#"
+          href="/managefacilities"
           className="hover:text-lime-600 px-4 py-2 hover:bg-transparent focus:bg-transparent active:bg-transparent"
         >
           Manage My Facilities

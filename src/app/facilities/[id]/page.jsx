@@ -1,8 +1,7 @@
-import React from 'react';
 
 const FacilityDetails = async ({ params }) => {
 
-  const { id } = await params
+  const { id } = params
 
   const res = await fetch(`http://localhost:5000/allfacilities/${id}`);
   const data = await res.json();
