@@ -10,7 +10,7 @@ const TeamMember = () => {
             id: 1,
             name: "Mason Carter",
             role: "Head Pickleball Coach",
-            image: "images/coach1.png",
+            image: "https://i.ibb.co.com/60bgphrs/tanvir.jpg",
         },
         {
             id: 2,
@@ -20,9 +20,9 @@ const TeamMember = () => {
         },
         {
             id: 3,
-            name: "Taukir",
+            name: "Maria Alemgaruglu",
             role: "E-learning Trainer",
-            image: "https://i.ibb.co.com/9HxR32rW/user.png",
+            image: "https://i.ibb.co.com/fL6X1w2/emily-decorator2.jpg",
         },
     ];
 
