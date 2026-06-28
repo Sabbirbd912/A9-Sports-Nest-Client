@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="bg-[#0A2240] text-white overflow-hidden pt-16">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 pb-12 border-b border-gray-700/50">
+      <div className="w-[80%] mx-auto px-4 md:px-8 pb-12 border-b border-gray-700/50">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8">
             <h2 className="text-2xl md:text-4xl font-black tracking-tight mb-3 leading-tight">
@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
+      <div className="w-[80%] mx-auto px-4 md:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-4 flex flex-col gap-5">
             <div>
@@ -221,16 +221,16 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* ================= ৩. বটম কপিরাইট এবং মার্কি টেক্সট এরিয়া ================= */}
+      
       <div className="bg-black/20 border-t border-gray-800 py-6">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-gray-400">
-          {/* কপিরাইট */}
+        <div className="w-[80%] mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-gray-400">
+          
           <p>
             &copy; {new Date().getFullYear()} SportNest Academy. All rights
             reserved.
           </p>
 
-          {/* পলিসি লিঙ্কস */}
+          
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">
               Privacy Policy

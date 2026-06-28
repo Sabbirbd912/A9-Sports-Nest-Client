@@ -50,7 +50,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="/managefacilities"
+          href="/managefacility"
           className="hover:text-lime-600 px-4 py-2 hover:bg-transparent focus:bg-transparent active:bg-transparent"
         >
           Manage My Facilities
@@ -69,7 +69,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-white shadow-sm">
-      <div className="navbar bg-white w-full md:w-[85%] m-auto px-6 py-4 font-semibold text-[#002d40]">
+      <div className="navbar bg-white w-full md:w-[80%] m-auto px-6 py-4 font-semibold text-[#002d40]">
         {/* Navbar Start: Logo & Mobile Dropdown */}
         <div className="navbar-start">
           <div className="dropdown">

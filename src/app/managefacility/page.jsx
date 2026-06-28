@@ -1,10 +1,11 @@
 "use client";
-import { FaEdit, FaTrash } from "react-icons/fa";
 import { useSession } from '@/lib/auth-client';
 import React, { useEffect, useState } from 'react';
-const BookingPage = () => {
+import { FaEdit, FaTrash } from "react-icons/fa";
 
-    const [bookings, setBookings] = useState([]);
+const ManageFacility = () => {
+
+    const [facilities, setFacilities] = useState([]);
 
     const { data, isPending } = useSession();
     const user = data?.user;
@@ -12,19 +13,20 @@ const BookingPage = () => {
     useEffect(() => {
         if (!user?.email) return;
 
-        const fetchBookings = async () => {
+        const fetchFacilities = async () => {
             const res = await fetch(
-                `http://localhost:5000/allbookings?email=${user.email}`
+                `http://localhost:5000/allfacilities?email=${user.email}`
             );
 
             const data = await res.json();
-            setBookings(data.result);
+            // console.log(data)
+            setFacilities(data);
         };
 
-        fetchBookings();
+        fetchFacilities();
     }, [user?.email]);
 
-    console.log(bookings)
+    // console.log(user?.email)
 
     if (isPending) {
         return (
@@ -39,7 +41,7 @@ const BookingPage = () => {
 
             <div className="w-[80%] mx-auto py-10 px-4">
                 <h1 className="text-3xl font-bold text-center mb-8 text-lime-700">
-                    All Bookings
+                    Manage Facilities
                 </h1>
 
                 <div className="overflow-x-auto bg-white shadow-lg rounded-2xl border border-lime-500">
@@ -47,41 +49,32 @@ const BookingPage = () => {
                         <thead className="bg-lime-100 text-[#002d40]">
                             <tr>
                                 <th className="p-4 text-left">#</th>
-                                <th className="p-4 text-left">User Email</th>
-                                <th className="p-4 text-left">Booking Date</th>
-                                <th className="p-4 text-left">Time Slot</th>
-                                <th className="p-4 text-left">Hours</th>
-                                <th className="p-4 text-left">Total Price</th>
-                                <th className="p-4 text-left">Status</th>
+                                <th className="p-4 text-left">Photo</th>
+                                <th className="p-4 text-left">Name</th>
+                                <th className="p-4 text-left">Type</th>
+                                <th className="p-4 text-left">Location</th>
+                                <th className="p-4 text-left">Price</th>
+                                <th className="p-4 text-left">Capacity</th>
                                 <th className="p-4 text-center">Actions</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            {bookings.map((booking, index) => (
+                            {(facilities || []).map((facility, index) => (
                                 <tr
                                     key={index}
                                     className="border-b text-gray-600 hover:bg-gray-50 transition"
                                 >
                                     <td className="p-4">{index + 1}</td>
-                                    <td className="p-4">{booking.user_email}</td>
-                                    <td className="p-4">{booking.booking_date}</td>
-                                    <td className="p-4">{booking.time_slot}</td>
-                                    <td className="p-4">{booking.hours}</td>
-                                    <td className="p-4">${booking.total_price}</td>
-
                                     <td className="p-4">
-                                        <span
-                                            className={`px-3 py-1 rounded-full text-sm font-medium ${booking.status === "Confirmed"
-                                                ? "bg-green-100 text-green-700"
-                                                : booking.status === "Pending"
-                                                    ? "bg-yellow-100 text-yellow-700"
-                                                    : "bg-blue-100 text-blue-700"
-                                                }`}
-                                        >
-                                            {booking.status}
-                                        </span>
+                                        <div className="bg-[#a2e635] w-20 h-20 flex rounded-2xl flex-col items-center text-center shadow-sm bg-cover bg-center" style={{ backgroundImage: `url(${facility.image_url})` }} >
+                                        </div>
                                     </td>
+                                    <td className="p-4">{facility.name}</td>
+                                    <td className="p-4">{facility.facility_type}</td>
+                                    <td className="p-4">{facility.location}</td>
+                                    <td className="p-4">{facility.price_per_hour}</td>
+                                    <td className="p-4">{facility.capacity}</td>
 
                                     <td className="p-4">
                                         <div className="flex justify-center gap-2">
@@ -99,10 +92,10 @@ const BookingPage = () => {
                                 </tr>
                             ))}
 
-                            {bookings.length === 0 && (
+                            {(facilities || []).length === 0 && (
                                 <tr>
                                     <td colSpan={8} className="text-center py-10 text-gray-500">
-                                        No bookings found.
+                                        No facilities found.
                                     </td>
                                 </tr>
                             )}
@@ -114,4 +107,4 @@ const BookingPage = () => {
     );
 };
 
-export default BookingPage;
+export default ManageFacility;
