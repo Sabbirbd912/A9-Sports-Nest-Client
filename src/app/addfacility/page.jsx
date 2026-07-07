@@ -3,6 +3,7 @@
 import { toast } from "react-toastify";
 
 const AddFacility = () => {
+
   const inputStyle = "w-full px-4 py-3 border border-gray-200 rounded-lg text-black placeholder:text-black placeholder:opacity-50 focus:outline-none focus:ring-2 focus:ring-[#97D700] focus:border-[#97D700]";
 
   const handleAddFacility = async (e) => {
@@ -23,11 +24,11 @@ const AddFacility = () => {
       body: JSON.stringify(facility)
     })
 
-    const data = await res.json();
+    const resdata = await res.json();
 
-    console.log(data);
+    console.log(resdata);
 
-    if(data.insertedId){
+    if (resdata.insertedId) {
       toast('Facility created successfully!');
     }
 
@@ -35,12 +36,13 @@ const AddFacility = () => {
 
   }
 
+
   return (
     <section className="w-full px-4 py-10 bg-lime-100">
-        <h2 className="text-3xl font-bold text-center text-lime-700 mb-8">
-          Create Facility to SportNest
-        </h2>
-      <div className="w-[80%] mx-auto bg-white rounded-3xl p-6 md:p-10 shadow-lg">
+      <h2 className="text-3xl font-bold text-center text-lime-700 mb-8">
+        Create Facility to SportNest
+      </h2>
+      <div className="w-full md:w-[80%] mx-auto bg-white rounded-3xl p-6 md:p-10 shadow-lg">
 
         <form onSubmit={handleAddFacility} className="space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

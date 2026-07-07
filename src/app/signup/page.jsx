@@ -27,7 +27,7 @@ export default function SignUpPage() {
       name: userData.name,
       email: userData.email,
       password: userData.password,
-      callbackURL: '/'
+      callbackURL: '/signin'
     })
 
     console.log('signup response:', { data, error });
@@ -50,7 +50,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <Card className="border mx-auto w-[95%] md:w-[30%] py-10 mt-5">
+    <Card className="border mx-auto w-[95%] md:w-[30%] py-10 my-5">
       <h1 className="text-center text-[#69DA35] text-2xl font-bold">Sign Up</h1>
 
       <Form className="flex w-[90%] mx-auto flex-col gap-4" onSubmit={onSubmit}>

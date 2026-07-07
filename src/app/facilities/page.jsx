@@ -5,7 +5,7 @@ const FacilitiesPage = async () => {
   return (
     <div className="w-full bg-lime-100">
 
-      <div className="container w-[80%] mx-auto px-6 py-10">
+      <div className="container w-full md:w-[80%] mx-auto px-6 py-10">
         <h2 className="text-3xl text-lime-700 font-bold text-center mb-8">
           All Of Our Facilities
         </h2>

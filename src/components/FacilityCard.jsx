@@ -29,26 +29,14 @@ const FacilityCard = ({facility}) => {
                     </p>
                 </div>
 
-                {/* --- Action Buttons (Details & Book Now) --- */}
                 <div className="flex gap-3 w-full mt-auto pt-2">
-                    {/* Details Button */}
                     <Link href={`/facilities/${facility._id}`} className="flex-1">
                         <Button
                             size="sm"
                             variant="bordered"
-                            className="w-full border-2 border-gray-200 hover:border-[#9ACD32] text-[#0A2240] font-bold rounded-xl transition-colors bg-transparent"
-                        >
-                            Details
-                        </Button>
-                    </Link>
-
-                    {/* Book Now Button */}
-                    <Link href={`/booking/${facility._id}`} className="flex-1">
-                        <Button
-                            size="sm"
                             className="w-full bg-[#9ACD32] hover:bg-[#861212]/0 bg-linear-to-r from-[#9ACD32] to-[#8cbd2b] text-[#0A2240] font-extrabold rounded-xl shadow-sm flex items-center justify-center gap-1 group/btn"
                         >
-                            Book Now
+                            Details 
                             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                         </Button>
                     </Link>

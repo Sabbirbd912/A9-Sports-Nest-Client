@@ -1,9 +1,12 @@
 "use client";
 import { useSession } from '@/lib/auth-client';
+import { redirect, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
 const BookingForm = ({ facility }) => {
+
+    const router = useRouter();
 
     const [hours, setHours] = useState("");
 
@@ -13,10 +16,15 @@ const BookingForm = ({ facility }) => {
 
     const user = data?.user;
 
-    console.log(facility)
+    console.log(user)
 
     const handleBooking = async (e) => {
         e.preventDefault();
+
+        if( !user ) {
+            router.replace('/signin');
+            return
+        }
 
         const formData = new FormData(e.currentTarget);
         const bookingData = Object.fromEntries(formData.entries());
@@ -54,7 +62,7 @@ const BookingForm = ({ facility }) => {
 
     return (
         <form onSubmit={handleBooking} className='bg-white p-5 rounded-2xl border border-lime-500'>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-5">
 
                 <div>
                     <label className="text-sm ml-2 block mb-2 font-semibold text-black">

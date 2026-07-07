@@ -11,30 +11,30 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { GrGoogle } from "react-icons/gr";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 export default function SignUpPage() {
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
 
-    console.log('Form submitted with:', userData);
+    console.log("Form submitted with:", userData);
 
     const { data, error } = await authClient.signIn.email({
       email: userData.email,
       password: userData.password,
       rememberMe: true,
-      callbackURL: '/'
-    })
+      callbackURL: "/",
+    });
 
-    console.log('sign in response:', { data, error });
+    console.log("sign in response:", { data, error });
 
     if (data) {
-      toast('Log in Successful!');
+      toast("Log in Successful!");
     }
     if (error) {
       Swal.fire({
@@ -43,15 +43,18 @@ export default function SignUpPage() {
         text: error.message,
       });
     }
-
+  };
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
-    <Card className="border mx-auto w-[95%] md:w-[30%] py-10 mt-5">
+    <Card className="border mx-auto w-[95%] md:w-[30%] py-10 my-5">
       <h1 className="text-center text-[#69DA35] text-2xl font-bold">Log In</h1>
 
       <Form className="flex w-[90%] mx-auto flex-col gap-4" onSubmit={onSubmit}>
-
         <TextField
           isRequired
           name="email"
@@ -97,15 +100,30 @@ export default function SignUpPage() {
         </TextField>
 
         <div className="flex gap-2">
-          <Button type="submit" className="bg-[#69DA35] text-[#1D232A] hover:bg-lime-500">
+          <Button
+            type="submit"
+            className="bg-[#69DA35] text-[#1D232A] hover:bg-lime-500 w-full"
+          >
             <Check />
             Submit
           </Button>
-          <Button type="reset" variant="secondary" className="bg-lime-200 text-[#1D232A] hover:bg-lime-300">
+          <Button
+            type="reset"
+            variant="secondary"
+            className="bg-lime-200 text-[#1D232A] hover:bg-lime-300 w-full"
+          >
             Reset
           </Button>
         </div>
       </Form>
+      <p className="text-center text-black">OR</p>
+      <Button
+        onClick={handleGoogleSignIn}
+        className="bg-[#4285F4] text-white hover:bg-[#3367D6] text-center w-full"
+      >
+        {" "}
+        <GrGoogle /> Sign in with Google{" "}
+      </Button>
     </Card>
   );
 }

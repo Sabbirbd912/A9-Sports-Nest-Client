@@ -11,11 +11,12 @@ const FacilityDetails = async ({ params }) => {
   // console.log(data)
 
   return (
-    <div className="w-full bg-lime-100">
-      <div className="w-[80%] mx-auto px-4 py-12 font-sans bg-lime-100">
+    
+<div className="w-full bg-lime-100">
+      <div className="w-full md:w-[80%] mx-auto px-4 py-12 font-sans bg-lime-100">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          <div className="lg:col-span-1 rounded-3xl overflow-hidden shadow-sm">
-            <div className="bg-[#a2e635] w-150 h-120 flex flex-col items-center text-center shadow-sm bg-cover bg-center" style={{ backgroundImage: `url(${data.image_url})` }} >
+          <div className="lg:col-span-1 rounded-2xl overflow-hidden shadow-xl">
+            <div className="bg-[#a2e635] w-full h-100 md:w-60 md:h-60 lg:w-100 lg:h-100 xl:w-150 xl:h-120 flex flex-col items-center text-center shadow-2xl bg-cover bg-center" style={{ backgroundImage: `url(${data.image_url})` }} >
 
             </div>
           </div>

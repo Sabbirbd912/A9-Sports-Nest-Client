@@ -1,45 +1,47 @@
 "use client";
+import { DeleteAlert } from '@/components/DeleteAlert';
+import Loading from '@/components/Loading';
 import { useSession } from '@/lib/auth-client';
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 const ManageFacility = () => {
 
     const [facilities, setFacilities] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const { data, isPending } = useSession();
     const user = data?.user;
 
-    useEffect(() => {
+    const fetchFacilities = async () => {
+
         if (!user?.email) return;
 
-        const fetchFacilities = async () => {
-            const res = await fetch(
-                `http://localhost:5000/allfacilities?email=${user.email}`
-            );
+        const res = await fetch(`http://localhost:5000/allfacilities?email=${user.email}`);
 
-            const data = await res.json();
-            // console.log(data)
-            setFacilities(data);
-        };
+        const data = await res.json();
+        // console.log(data)
+        setFacilities(data);
+        setLoading(false)
+
+    };
+
+    useEffect(() => {
 
         fetchFacilities();
     }, [user?.email]);
 
-    // console.log(user?.email)
 
-    if (isPending) {
-        return (
-            <div className="w-full h-22 bg-white flex justify-center items-center">
-                <span className="loading loading-spinner text-[#002d40] loading-xl"></span>
-            </div>
-        );
+    if (isPending || loading) {
+        return <Loading></Loading>
     }
 
     return (
         <div className="w-full bg-lime-100">
 
-            <div className="w-[80%] mx-auto py-10 px-4">
+            <div className="w-full md:w-[80%] mx-auto py-10 px-4">
                 <h1 className="text-3xl font-bold text-center mb-8 text-lime-700">
                     Manage Facilities
                 </h1>
@@ -78,15 +80,17 @@ const ManageFacility = () => {
 
                                     <td className="p-4">
                                         <div className="flex justify-center gap-2">
-                                            <button className="flex items-center gap-1 px-3 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white transition">
+                                            <Link href={`/managefacility/${facility._id}`} className="flex items-center rounded-4xl text-sm gap-1 px-3 py-2 border border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition">
                                                 <FaEdit />
                                                 Edit
-                                            </button>
+                                            </Link>
 
-                                            <button className="flex items-center gap-1 px-3 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition">
+                                            {/* <button className="flex items-center gap-1 px-3 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition">
                                                 <FaTrash />
                                                 Delete
-                                            </button>
+                                            </button> */}
+
+                                            <DeleteAlert refetch={fetchFacilities} alertData={facility} endpoint={'deletefacility'} ></DeleteAlert>
                                         </div>
                                     </td>
                                 </tr>
