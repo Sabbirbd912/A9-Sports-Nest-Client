@@ -1,6 +1,6 @@
 import Link from "next/link";
 const FacilitiesPage = async () => {
-  const res = await fetch("http://localhost:5000/allfacilities");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/allfacilities`);
   const data = await res.json();
   return (
     <div className="w-full bg-lime-100">

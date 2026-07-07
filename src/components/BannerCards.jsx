@@ -6,7 +6,7 @@ import FacilityCard from "./FacilityCard";
 const BannerCards = async () => {
   async function getFacilities() {
     try {
-      const res = await fetch("http://localhost:5000/allfacilities", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/allfacilities`, {
         next: { revalidate: 10 },
       });
       if (!res.ok) return [];

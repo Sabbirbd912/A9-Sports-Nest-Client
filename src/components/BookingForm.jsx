@@ -38,7 +38,7 @@ const BookingForm = ({ facility }) => {
 
         console.log(booking);
 
-        const res = await fetch('http://localhost:5000/addbooking', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/addbooking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

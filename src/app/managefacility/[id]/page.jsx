@@ -17,7 +17,7 @@ const editFacility = ({ params }) => {
 
     const fetchFacility = async () => {
 
-        const res = await fetch(`http://localhost:5000/allfacilities/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/allfacilities/${id}`);
         const data = await res.json();
         setFacility(data);
         setIsLoading(false);
@@ -50,7 +50,7 @@ const editFacility = ({ params }) => {
 
         console.log(newFacility)
 
-        const res = await fetch(`http://localhost:5000/updatefacility/${facility._id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/updatefacility/${facility._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

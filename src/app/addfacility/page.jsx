@@ -16,7 +16,7 @@ const AddFacility = () => {
 
     console.log(facility)
 
-    const res = await fetch('http://localhost:5000/addfacilities', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/addfacilities`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

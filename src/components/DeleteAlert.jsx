@@ -13,7 +13,7 @@ export function DeleteAlert({ alertData, endpoint }) {
 
     const loadFacility = async () => {
 
-        const res = await fetch(`http://localhost:5000/allfacilities/${alertData.facility_id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/allfacilities/${alertData.facility_id}`);
 
         const data = await res.json();
         setFacility(data);
@@ -22,7 +22,7 @@ export function DeleteAlert({ alertData, endpoint }) {
 
     const handleDelete = async () => {
 
-        const res = await fetch(`http://localhost:5000/${endpoint}/${alertData._id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/${endpoint}/${alertData._id}`, {
             method: "DELETE",
             headers: {
                 "content-type": "application/json",

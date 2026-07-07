@@ -29,7 +29,7 @@ const BookingPage = async () => {
 
     console.log(token)
 
-    const res = await fetch(`http://localhost:5000/allbookings?email=${user.email}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/allbookings?email=${user.email}`,{
         headers: {
             authorization: `Bearer ${token}`
         }
@@ -41,7 +41,7 @@ const BookingPage = async () => {
 
     //     if (!user?.email) return;
 
-    //     const res = await fetch(`http://localhost:5000/allbookings?email=${user.email}`);
+    //     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/allbookings?email=${user.email}`);
 
     //     const data = await res.json();
     //     setBookings(data.result);
